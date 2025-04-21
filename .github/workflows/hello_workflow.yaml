@@ -1,0 +1,20 @@
+#工作流文件有几个部分，解释如下：
+
+name: hello_workflow
+# 关键字name设置工作流的名称。您可以指定任何您喜欢的合适名称。
+
+on: [push]
+# 关键字on指定工作流何时执行。此处的工作流会在您将内容推送到存储库时执行。
+
+
+jobs:
+  print-hello:
+# 在这里，您可以通过在关键字下缩进来列出所有要运行的作业jobs。在此工作流中，只有一个名为 的作业print-hello。
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hello world using echo
+        run: echo "$(<hello.txt)"
+      - name: Hello world using cat
+        run: cat hello.txt
+
